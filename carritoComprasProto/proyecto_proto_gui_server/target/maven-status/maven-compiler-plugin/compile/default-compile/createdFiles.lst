@@ -1,0 +1,17 @@
+interfaces\IControlador.class
+modelo\Modelo.class
+interfaces\IModeloModificable.class
+entidades\StockProducto.class
+interfaces\Publisher.class
+vista\Inventario$2.class
+interfaces\IModeloLeible.class
+utils\SoloEnterosPositivosFilter.class
+vista\Inventario.class
+vista\Inventario$1.class
+vista\Inventario$3.class
+entidades\Producto.class
+interfaces\Subscriber.class
+vista\AgregarProducto.class
+utils\PrecioFilter.class
+valdez\alejandro\proyecto_proto_gui_server\Proyecto_proto_gui_server.class
+controlador\Controlador.class
