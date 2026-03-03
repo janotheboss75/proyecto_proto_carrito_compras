@@ -8,26 +8,17 @@ public interface ProductoResponseOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>repeated .Producto productos = 1;</code>
+   * <code>.Producto producto = 1;</code>
+   * @return Whether the producto field is set.
    */
-  java.util.List<valdez.alejandro.carrito.grpc.Producto> 
-      getProductosList();
+  boolean hasProducto();
   /**
-   * <code>repeated .Producto productos = 1;</code>
+   * <code>.Producto producto = 1;</code>
+   * @return The producto.
    */
-  valdez.alejandro.carrito.grpc.Producto getProductos(int index);
+  valdez.alejandro.carrito.grpc.Producto getProducto();
   /**
-   * <code>repeated .Producto productos = 1;</code>
+   * <code>.Producto producto = 1;</code>
    */
-  int getProductosCount();
-  /**
-   * <code>repeated .Producto productos = 1;</code>
-   */
-  java.util.List<? extends valdez.alejandro.carrito.grpc.ProductoOrBuilder> 
-      getProductosOrBuilderList();
-  /**
-   * <code>repeated .Producto productos = 1;</code>
-   */
-  valdez.alejandro.carrito.grpc.ProductoOrBuilder getProductosOrBuilder(
-      int index);
+  valdez.alejandro.carrito.grpc.ProductoOrBuilder getProductoOrBuilder();
 }

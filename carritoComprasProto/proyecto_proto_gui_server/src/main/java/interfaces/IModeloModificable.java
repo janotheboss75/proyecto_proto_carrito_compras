@@ -11,6 +11,10 @@ public interface IModeloModificable {
     
     public void ocultarPantallaInventario();
     
+    public void mostrarPantallaAgregarProducto();
+    
+    public void ocultarPantallaAgregarProducto();
+    
     public void agregarProductoAInventario(StockProducto stockProducto);
     
 }

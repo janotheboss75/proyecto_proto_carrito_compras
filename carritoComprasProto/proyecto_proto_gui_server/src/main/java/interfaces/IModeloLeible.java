@@ -10,6 +10,8 @@ import java.util.List;
 public interface IModeloLeible {
     public boolean isMostrandoPantallaInventario();
     
+    public boolean isMostrandoPantallaAgregarProducto();
+    
     public List<StockProducto> obtenerInventario();
     
 }

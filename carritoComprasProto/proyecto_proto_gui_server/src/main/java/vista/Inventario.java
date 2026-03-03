@@ -64,6 +64,11 @@ public class Inventario extends javax.swing.JFrame implements Subscriber{
         jPanelNav.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jButton1.setText("Agregar Producto");
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton1MouseClicked(evt);
+            }
+        });
         jPanelNav.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 30, -1, -1));
 
         jLabelTitulo.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
@@ -152,6 +157,10 @@ public class Inventario extends javax.swing.JFrame implements Subscriber{
     private void jLabelCerrarSesionMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelCerrarSesionMouseExited
         jPanelBtnCerrarSesion.setBackground(new Color(255,51,51));
     }//GEN-LAST:event_jLabelCerrarSesionMouseExited
+
+    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+        controlador.mostrarPantallaAgregarProducto();
+    }//GEN-LAST:event_jButton1MouseClicked
 
     
     

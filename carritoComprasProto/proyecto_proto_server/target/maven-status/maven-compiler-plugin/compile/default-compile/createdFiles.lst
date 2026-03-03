@@ -1,3 +1,7 @@
-entidades\Producto.class
 implementaciones\ProductoServiceImpl.class
+interfaces\IServer.class
+entidades\Producto.class
+fachade\Server.class
 valdez\alejandro\proyecto_proto_server\Proyecto_proto_server.class
+mappers\ProductoMapper.class
+conexion\GrpcServerManager.class

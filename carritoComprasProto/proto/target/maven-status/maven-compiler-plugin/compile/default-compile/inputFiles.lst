@@ -1,6 +1,5 @@
 C:\Users\janot\Desktop\carritoComprasProto\proto\src\main\java\valdez\alejandro\proto\Proto.java
 C:\Users\janot\Desktop\carritoComprasProto\proto\target\generated-sources\protobuf\grpc-java\valdez\alejandro\carrito\grpc\CompraServiceGrpc.java
-C:\Users\janot\Desktop\carritoComprasProto\proto\target\generated-sources\protobuf\grpc-java\valdez\alejandro\carrito\grpc\InventarioServiceGrpc.java
 C:\Users\janot\Desktop\carritoComprasProto\proto\target\generated-sources\protobuf\grpc-java\valdez\alejandro\carrito\grpc\ProductoServiceGrpc.java
 C:\Users\janot\Desktop\carritoComprasProto\proto\target\generated-sources\protobuf\java\valdez\alejandro\carrito\grpc\Carrito.java
 C:\Users\janot\Desktop\carritoComprasProto\proto\target\generated-sources\protobuf\java\valdez\alejandro\carrito\grpc\CompraRequest.java
@@ -8,10 +7,6 @@ C:\Users\janot\Desktop\carritoComprasProto\proto\target\generated-sources\protob
 C:\Users\janot\Desktop\carritoComprasProto\proto\target\generated-sources\protobuf\java\valdez\alejandro\carrito\grpc\CompraResponse.java
 C:\Users\janot\Desktop\carritoComprasProto\proto\target\generated-sources\protobuf\java\valdez\alejandro\carrito\grpc\CompraResponseOrBuilder.java
 C:\Users\janot\Desktop\carritoComprasProto\proto\target\generated-sources\protobuf\java\valdez\alejandro\carrito\grpc\EstadoCompra.java
-C:\Users\janot\Desktop\carritoComprasProto\proto\target\generated-sources\protobuf\java\valdez\alejandro\carrito\grpc\InventarioRequest.java
-C:\Users\janot\Desktop\carritoComprasProto\proto\target\generated-sources\protobuf\java\valdez\alejandro\carrito\grpc\InventarioRequestOrBuilder.java
-C:\Users\janot\Desktop\carritoComprasProto\proto\target\generated-sources\protobuf\java\valdez\alejandro\carrito\grpc\InventarioResponse.java
-C:\Users\janot\Desktop\carritoComprasProto\proto\target\generated-sources\protobuf\java\valdez\alejandro\carrito\grpc\InventarioResponseOrBuilder.java
 C:\Users\janot\Desktop\carritoComprasProto\proto\target\generated-sources\protobuf\java\valdez\alejandro\carrito\grpc\Producto.java
 C:\Users\janot\Desktop\carritoComprasProto\proto\target\generated-sources\protobuf\java\valdez\alejandro\carrito\grpc\ProductoCarrito.java
 C:\Users\janot\Desktop\carritoComprasProto\proto\target\generated-sources\protobuf\java\valdez\alejandro\carrito\grpc\ProductoCarritoOrBuilder.java

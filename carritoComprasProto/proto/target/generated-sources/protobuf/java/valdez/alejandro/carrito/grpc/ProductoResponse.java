@@ -16,7 +16,6 @@ private static final long serialVersionUID = 0L;
     super(builder);
   }
   private ProductoResponse() {
-    productos_ = java.util.Collections.emptyList();
   }
 
   @java.lang.Override
@@ -39,45 +38,30 @@ private static final long serialVersionUID = 0L;
             valdez.alejandro.carrito.grpc.ProductoResponse.class, valdez.alejandro.carrito.grpc.ProductoResponse.Builder.class);
   }
 
-  public static final int PRODUCTOS_FIELD_NUMBER = 1;
-  @SuppressWarnings("serial")
-  private java.util.List<valdez.alejandro.carrito.grpc.Producto> productos_;
+  public static final int PRODUCTO_FIELD_NUMBER = 1;
+  private valdez.alejandro.carrito.grpc.Producto producto_;
   /**
-   * <code>repeated .Producto productos = 1;</code>
+   * <code>.Producto producto = 1;</code>
+   * @return Whether the producto field is set.
    */
   @java.lang.Override
-  public java.util.List<valdez.alejandro.carrito.grpc.Producto> getProductosList() {
-    return productos_;
+  public boolean hasProducto() {
+    return producto_ != null;
   }
   /**
-   * <code>repeated .Producto productos = 1;</code>
+   * <code>.Producto producto = 1;</code>
+   * @return The producto.
    */
   @java.lang.Override
-  public java.util.List<? extends valdez.alejandro.carrito.grpc.ProductoOrBuilder> 
-      getProductosOrBuilderList() {
-    return productos_;
+  public valdez.alejandro.carrito.grpc.Producto getProducto() {
+    return producto_ == null ? valdez.alejandro.carrito.grpc.Producto.getDefaultInstance() : producto_;
   }
   /**
-   * <code>repeated .Producto productos = 1;</code>
+   * <code>.Producto producto = 1;</code>
    */
   @java.lang.Override
-  public int getProductosCount() {
-    return productos_.size();
-  }
-  /**
-   * <code>repeated .Producto productos = 1;</code>
-   */
-  @java.lang.Override
-  public valdez.alejandro.carrito.grpc.Producto getProductos(int index) {
-    return productos_.get(index);
-  }
-  /**
-   * <code>repeated .Producto productos = 1;</code>
-   */
-  @java.lang.Override
-  public valdez.alejandro.carrito.grpc.ProductoOrBuilder getProductosOrBuilder(
-      int index) {
-    return productos_.get(index);
+  public valdez.alejandro.carrito.grpc.ProductoOrBuilder getProductoOrBuilder() {
+    return producto_ == null ? valdez.alejandro.carrito.grpc.Producto.getDefaultInstance() : producto_;
   }
 
   private byte memoizedIsInitialized = -1;
@@ -94,8 +78,8 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
-    for (int i = 0; i < productos_.size(); i++) {
-      output.writeMessage(1, productos_.get(i));
+    if (producto_ != null) {
+      output.writeMessage(1, getProducto());
     }
     getUnknownFields().writeTo(output);
   }
@@ -106,9 +90,9 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
-    for (int i = 0; i < productos_.size(); i++) {
+    if (producto_ != null) {
       size += com.google.protobuf.CodedOutputStream
-        .computeMessageSize(1, productos_.get(i));
+        .computeMessageSize(1, getProducto());
     }
     size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
@@ -125,8 +109,11 @@ private static final long serialVersionUID = 0L;
     }
     valdez.alejandro.carrito.grpc.ProductoResponse other = (valdez.alejandro.carrito.grpc.ProductoResponse) obj;
 
-    if (!getProductosList()
-        .equals(other.getProductosList())) return false;
+    if (hasProducto() != other.hasProducto()) return false;
+    if (hasProducto()) {
+      if (!getProducto()
+          .equals(other.getProducto())) return false;
+    }
     if (!getUnknownFields().equals(other.getUnknownFields())) return false;
     return true;
   }
@@ -138,9 +125,9 @@ private static final long serialVersionUID = 0L;
     }
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
-    if (getProductosCount() > 0) {
-      hash = (37 * hash) + PRODUCTOS_FIELD_NUMBER;
-      hash = (53 * hash) + getProductosList().hashCode();
+    if (hasProducto()) {
+      hash = (37 * hash) + PRODUCTO_FIELD_NUMBER;
+      hash = (53 * hash) + getProducto().hashCode();
     }
     hash = (29 * hash) + getUnknownFields().hashCode();
     memoizedHashCode = hash;
@@ -271,13 +258,11 @@ private static final long serialVersionUID = 0L;
     public Builder clear() {
       super.clear();
       bitField0_ = 0;
-      if (productosBuilder_ == null) {
-        productos_ = java.util.Collections.emptyList();
-      } else {
-        productos_ = null;
-        productosBuilder_.clear();
+      producto_ = null;
+      if (productoBuilder_ != null) {
+        productoBuilder_.dispose();
+        productoBuilder_ = null;
       }
-      bitField0_ = (bitField0_ & ~0x00000001);
       return this;
     }
 
@@ -304,26 +289,18 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public valdez.alejandro.carrito.grpc.ProductoResponse buildPartial() {
       valdez.alejandro.carrito.grpc.ProductoResponse result = new valdez.alejandro.carrito.grpc.ProductoResponse(this);
-      buildPartialRepeatedFields(result);
       if (bitField0_ != 0) { buildPartial0(result); }
       onBuilt();
       return result;
     }
 
-    private void buildPartialRepeatedFields(valdez.alejandro.carrito.grpc.ProductoResponse result) {
-      if (productosBuilder_ == null) {
-        if (((bitField0_ & 0x00000001) != 0)) {
-          productos_ = java.util.Collections.unmodifiableList(productos_);
-          bitField0_ = (bitField0_ & ~0x00000001);
-        }
-        result.productos_ = productos_;
-      } else {
-        result.productos_ = productosBuilder_.build();
-      }
-    }
-
     private void buildPartial0(valdez.alejandro.carrito.grpc.ProductoResponse result) {
       int from_bitField0_ = bitField0_;
+      if (((from_bitField0_ & 0x00000001) != 0)) {
+        result.producto_ = productoBuilder_ == null
+            ? producto_
+            : productoBuilder_.build();
+      }
     }
 
     @java.lang.Override
@@ -338,31 +315,8 @@ private static final long serialVersionUID = 0L;
 
     public Builder mergeFrom(valdez.alejandro.carrito.grpc.ProductoResponse other) {
       if (other == valdez.alejandro.carrito.grpc.ProductoResponse.getDefaultInstance()) return this;
-      if (productosBuilder_ == null) {
-        if (!other.productos_.isEmpty()) {
-          if (productos_.isEmpty()) {
-            productos_ = other.productos_;
-            bitField0_ = (bitField0_ & ~0x00000001);
-          } else {
-            ensureProductosIsMutable();
-            productos_.addAll(other.productos_);
-          }
-          onChanged();
-        }
-      } else {
-        if (!other.productos_.isEmpty()) {
-          if (productosBuilder_.isEmpty()) {
-            productosBuilder_.dispose();
-            productosBuilder_ = null;
-            productos_ = other.productos_;
-            bitField0_ = (bitField0_ & ~0x00000001);
-            productosBuilder_ = 
-              com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
-                 getProductosFieldBuilder() : null;
-          } else {
-            productosBuilder_.addAllMessages(other.productos_);
-          }
-        }
+      if (other.hasProducto()) {
+        mergeProducto(other.getProducto());
       }
       this.mergeUnknownFields(other.getUnknownFields());
       onChanged();
@@ -391,16 +345,10 @@ private static final long serialVersionUID = 0L;
               done = true;
               break;
             case 10: {
-              valdez.alejandro.carrito.grpc.Producto m =
-                  input.readMessage(
-                      valdez.alejandro.carrito.grpc.Producto.parser(),
-                      extensionRegistry);
-              if (productosBuilder_ == null) {
-                ensureProductosIsMutable();
-                productos_.add(m);
-              } else {
-                productosBuilder_.addMessage(m);
-              }
+              input.readMessage(
+                  getProductoFieldBuilder().getBuilder(),
+                  extensionRegistry);
+              bitField0_ |= 0x00000001;
               break;
             } // case 10
             default: {
@@ -420,244 +368,123 @@ private static final long serialVersionUID = 0L;
     }
     private int bitField0_;
 
-    private java.util.List<valdez.alejandro.carrito.grpc.Producto> productos_ =
-      java.util.Collections.emptyList();
-    private void ensureProductosIsMutable() {
-      if (!((bitField0_ & 0x00000001) != 0)) {
-        productos_ = new java.util.ArrayList<valdez.alejandro.carrito.grpc.Producto>(productos_);
-        bitField0_ |= 0x00000001;
-       }
-    }
-
-    private com.google.protobuf.RepeatedFieldBuilderV3<
-        valdez.alejandro.carrito.grpc.Producto, valdez.alejandro.carrito.grpc.Producto.Builder, valdez.alejandro.carrito.grpc.ProductoOrBuilder> productosBuilder_;
-
+    private valdez.alejandro.carrito.grpc.Producto producto_;
+    private com.google.protobuf.SingleFieldBuilderV3<
+        valdez.alejandro.carrito.grpc.Producto, valdez.alejandro.carrito.grpc.Producto.Builder, valdez.alejandro.carrito.grpc.ProductoOrBuilder> productoBuilder_;
     /**
-     * <code>repeated .Producto productos = 1;</code>
+     * <code>.Producto producto = 1;</code>
+     * @return Whether the producto field is set.
      */
-    public java.util.List<valdez.alejandro.carrito.grpc.Producto> getProductosList() {
-      if (productosBuilder_ == null) {
-        return java.util.Collections.unmodifiableList(productos_);
+    public boolean hasProducto() {
+      return ((bitField0_ & 0x00000001) != 0);
+    }
+    /**
+     * <code>.Producto producto = 1;</code>
+     * @return The producto.
+     */
+    public valdez.alejandro.carrito.grpc.Producto getProducto() {
+      if (productoBuilder_ == null) {
+        return producto_ == null ? valdez.alejandro.carrito.grpc.Producto.getDefaultInstance() : producto_;
       } else {
-        return productosBuilder_.getMessageList();
+        return productoBuilder_.getMessage();
       }
     }
     /**
-     * <code>repeated .Producto productos = 1;</code>
+     * <code>.Producto producto = 1;</code>
      */
-    public int getProductosCount() {
-      if (productosBuilder_ == null) {
-        return productos_.size();
-      } else {
-        return productosBuilder_.getCount();
-      }
-    }
-    /**
-     * <code>repeated .Producto productos = 1;</code>
-     */
-    public valdez.alejandro.carrito.grpc.Producto getProductos(int index) {
-      if (productosBuilder_ == null) {
-        return productos_.get(index);
-      } else {
-        return productosBuilder_.getMessage(index);
-      }
-    }
-    /**
-     * <code>repeated .Producto productos = 1;</code>
-     */
-    public Builder setProductos(
-        int index, valdez.alejandro.carrito.grpc.Producto value) {
-      if (productosBuilder_ == null) {
+    public Builder setProducto(valdez.alejandro.carrito.grpc.Producto value) {
+      if (productoBuilder_ == null) {
         if (value == null) {
           throw new NullPointerException();
         }
-        ensureProductosIsMutable();
-        productos_.set(index, value);
-        onChanged();
+        producto_ = value;
       } else {
-        productosBuilder_.setMessage(index, value);
+        productoBuilder_.setMessage(value);
       }
+      bitField0_ |= 0x00000001;
+      onChanged();
       return this;
     }
     /**
-     * <code>repeated .Producto productos = 1;</code>
+     * <code>.Producto producto = 1;</code>
      */
-    public Builder setProductos(
-        int index, valdez.alejandro.carrito.grpc.Producto.Builder builderForValue) {
-      if (productosBuilder_ == null) {
-        ensureProductosIsMutable();
-        productos_.set(index, builderForValue.build());
-        onChanged();
-      } else {
-        productosBuilder_.setMessage(index, builderForValue.build());
-      }
-      return this;
-    }
-    /**
-     * <code>repeated .Producto productos = 1;</code>
-     */
-    public Builder addProductos(valdez.alejandro.carrito.grpc.Producto value) {
-      if (productosBuilder_ == null) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
-        ensureProductosIsMutable();
-        productos_.add(value);
-        onChanged();
-      } else {
-        productosBuilder_.addMessage(value);
-      }
-      return this;
-    }
-    /**
-     * <code>repeated .Producto productos = 1;</code>
-     */
-    public Builder addProductos(
-        int index, valdez.alejandro.carrito.grpc.Producto value) {
-      if (productosBuilder_ == null) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
-        ensureProductosIsMutable();
-        productos_.add(index, value);
-        onChanged();
-      } else {
-        productosBuilder_.addMessage(index, value);
-      }
-      return this;
-    }
-    /**
-     * <code>repeated .Producto productos = 1;</code>
-     */
-    public Builder addProductos(
+    public Builder setProducto(
         valdez.alejandro.carrito.grpc.Producto.Builder builderForValue) {
-      if (productosBuilder_ == null) {
-        ensureProductosIsMutable();
-        productos_.add(builderForValue.build());
-        onChanged();
+      if (productoBuilder_ == null) {
+        producto_ = builderForValue.build();
       } else {
-        productosBuilder_.addMessage(builderForValue.build());
+        productoBuilder_.setMessage(builderForValue.build());
       }
+      bitField0_ |= 0x00000001;
+      onChanged();
       return this;
     }
     /**
-     * <code>repeated .Producto productos = 1;</code>
+     * <code>.Producto producto = 1;</code>
      */
-    public Builder addProductos(
-        int index, valdez.alejandro.carrito.grpc.Producto.Builder builderForValue) {
-      if (productosBuilder_ == null) {
-        ensureProductosIsMutable();
-        productos_.add(index, builderForValue.build());
-        onChanged();
+    public Builder mergeProducto(valdez.alejandro.carrito.grpc.Producto value) {
+      if (productoBuilder_ == null) {
+        if (((bitField0_ & 0x00000001) != 0) &&
+          producto_ != null &&
+          producto_ != valdez.alejandro.carrito.grpc.Producto.getDefaultInstance()) {
+          getProductoBuilder().mergeFrom(value);
+        } else {
+          producto_ = value;
+        }
       } else {
-        productosBuilder_.addMessage(index, builderForValue.build());
+        productoBuilder_.mergeFrom(value);
       }
+      bitField0_ |= 0x00000001;
+      onChanged();
       return this;
     }
     /**
-     * <code>repeated .Producto productos = 1;</code>
+     * <code>.Producto producto = 1;</code>
      */
-    public Builder addAllProductos(
-        java.lang.Iterable<? extends valdez.alejandro.carrito.grpc.Producto> values) {
-      if (productosBuilder_ == null) {
-        ensureProductosIsMutable();
-        com.google.protobuf.AbstractMessageLite.Builder.addAll(
-            values, productos_);
-        onChanged();
-      } else {
-        productosBuilder_.addAllMessages(values);
+    public Builder clearProducto() {
+      bitField0_ = (bitField0_ & ~0x00000001);
+      producto_ = null;
+      if (productoBuilder_ != null) {
+        productoBuilder_.dispose();
+        productoBuilder_ = null;
       }
+      onChanged();
       return this;
     }
     /**
-     * <code>repeated .Producto productos = 1;</code>
+     * <code>.Producto producto = 1;</code>
      */
-    public Builder clearProductos() {
-      if (productosBuilder_ == null) {
-        productos_ = java.util.Collections.emptyList();
-        bitField0_ = (bitField0_ & ~0x00000001);
-        onChanged();
+    public valdez.alejandro.carrito.grpc.Producto.Builder getProductoBuilder() {
+      bitField0_ |= 0x00000001;
+      onChanged();
+      return getProductoFieldBuilder().getBuilder();
+    }
+    /**
+     * <code>.Producto producto = 1;</code>
+     */
+    public valdez.alejandro.carrito.grpc.ProductoOrBuilder getProductoOrBuilder() {
+      if (productoBuilder_ != null) {
+        return productoBuilder_.getMessageOrBuilder();
       } else {
-        productosBuilder_.clear();
-      }
-      return this;
-    }
-    /**
-     * <code>repeated .Producto productos = 1;</code>
-     */
-    public Builder removeProductos(int index) {
-      if (productosBuilder_ == null) {
-        ensureProductosIsMutable();
-        productos_.remove(index);
-        onChanged();
-      } else {
-        productosBuilder_.remove(index);
-      }
-      return this;
-    }
-    /**
-     * <code>repeated .Producto productos = 1;</code>
-     */
-    public valdez.alejandro.carrito.grpc.Producto.Builder getProductosBuilder(
-        int index) {
-      return getProductosFieldBuilder().getBuilder(index);
-    }
-    /**
-     * <code>repeated .Producto productos = 1;</code>
-     */
-    public valdez.alejandro.carrito.grpc.ProductoOrBuilder getProductosOrBuilder(
-        int index) {
-      if (productosBuilder_ == null) {
-        return productos_.get(index);  } else {
-        return productosBuilder_.getMessageOrBuilder(index);
+        return producto_ == null ?
+            valdez.alejandro.carrito.grpc.Producto.getDefaultInstance() : producto_;
       }
     }
     /**
-     * <code>repeated .Producto productos = 1;</code>
+     * <code>.Producto producto = 1;</code>
      */
-    public java.util.List<? extends valdez.alejandro.carrito.grpc.ProductoOrBuilder> 
-         getProductosOrBuilderList() {
-      if (productosBuilder_ != null) {
-        return productosBuilder_.getMessageOrBuilderList();
-      } else {
-        return java.util.Collections.unmodifiableList(productos_);
-      }
-    }
-    /**
-     * <code>repeated .Producto productos = 1;</code>
-     */
-    public valdez.alejandro.carrito.grpc.Producto.Builder addProductosBuilder() {
-      return getProductosFieldBuilder().addBuilder(
-          valdez.alejandro.carrito.grpc.Producto.getDefaultInstance());
-    }
-    /**
-     * <code>repeated .Producto productos = 1;</code>
-     */
-    public valdez.alejandro.carrito.grpc.Producto.Builder addProductosBuilder(
-        int index) {
-      return getProductosFieldBuilder().addBuilder(
-          index, valdez.alejandro.carrito.grpc.Producto.getDefaultInstance());
-    }
-    /**
-     * <code>repeated .Producto productos = 1;</code>
-     */
-    public java.util.List<valdez.alejandro.carrito.grpc.Producto.Builder> 
-         getProductosBuilderList() {
-      return getProductosFieldBuilder().getBuilderList();
-    }
-    private com.google.protobuf.RepeatedFieldBuilderV3<
+    private com.google.protobuf.SingleFieldBuilderV3<
         valdez.alejandro.carrito.grpc.Producto, valdez.alejandro.carrito.grpc.Producto.Builder, valdez.alejandro.carrito.grpc.ProductoOrBuilder> 
-        getProductosFieldBuilder() {
-      if (productosBuilder_ == null) {
-        productosBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
+        getProductoFieldBuilder() {
+      if (productoBuilder_ == null) {
+        productoBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
             valdez.alejandro.carrito.grpc.Producto, valdez.alejandro.carrito.grpc.Producto.Builder, valdez.alejandro.carrito.grpc.ProductoOrBuilder>(
-                productos_,
-                ((bitField0_ & 0x00000001) != 0),
+                getProducto(),
                 getParentForChildren(),
                 isClean());
-        productos_ = null;
+        producto_ = null;
       }
-      return productosBuilder_;
+      return productoBuilder_;
     }
     @java.lang.Override
     public final Builder setUnknownFields(

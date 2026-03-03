@@ -1,11 +1,15 @@
 package fachada;
 
-import java.util.List;
+import interfaces.SubscriberClient;
+
 
 /**
  *
  * @author janot
  */
 public interface ICliente {
-    public void escucharProductos();
+    public void conectarConServidor();
+    
+    public void cargarDatosExistentes();
+    public void subscribirAProductoService(SubscriberClient subscriberClient);
 }

@@ -1,6 +1,11 @@
 package vista;
 
+import entidades.Producto;
+import entidades.StockProducto;
+import interfaces.IControlador;
+import interfaces.IModeloLeible;
 import interfaces.Subscriber;
+import javax.swing.JOptionPane;
 import javax.swing.text.AbstractDocument;
 import utils.PrecioFilter;
 import utils.SoloEnterosPositivosFilter;
@@ -10,15 +15,21 @@ import utils.SoloEnterosPositivosFilter;
  * @author janot
  */
 public class AgregarProducto extends javax.swing.JDialog implements Subscriber{
+    private IModeloLeible modeloLeible;
+    private IControlador controlador;
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(AgregarProducto.class.getName());
 
     /**
      * Creates new form AgregarProducto
      */
-    public AgregarProducto(java.awt.Frame parent, boolean modal) {
+    public AgregarProducto(java.awt.Frame parent, boolean modal, IModeloLeible modeloLeible, IControlador controlador) {
         super(parent, modal);
+        this.modeloLeible = modeloLeible;
+        this.controlador = controlador;
         initComponents();
+        this.setResizable(false);
+        this.setLocationRelativeTo(parent);
     }
 
     /**
@@ -84,15 +95,35 @@ public class AgregarProducto extends javax.swing.JDialog implements Subscriber{
         .setDocumentFilter(new PrecioFilter());
 
         jButtonCancelar.setText("Cancelar");
+        jButtonCancelar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonCancelarMouseClicked(evt);
+            }
+        });
         jPanelPrincipal.add(jButtonCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 340, -1, 30));
 
         jButtonAgregar.setText("Agregar");
+        jButtonAgregar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonAgregarMouseClicked(evt);
+            }
+        });
         jPanelPrincipal.add(jButtonAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 340, -1, 30));
 
         getContentPane().add(jPanelPrincipal, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 400, 390));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButtonCancelarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonCancelarMouseClicked
+        controlador.ocultarPantallaAgregarProducto();
+        limpiarFormulario();
+    }//GEN-LAST:event_jButtonCancelarMouseClicked
+
+    private void jButtonAgregarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonAgregarMouseClicked
+        agregarProducto();
+        limpiarFormulario();
+    }//GEN-LAST:event_jButtonAgregarMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -112,6 +143,90 @@ public class AgregarProducto extends javax.swing.JDialog implements Subscriber{
 
     @Override
     public void update() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        this.setVisible(modeloLeible.isMostrandoPantallaAgregarProducto());
+    }
+    
+    private void agregarProducto(){
+
+        boolean bandera = true;
+
+        String idProducto = jTextFieldIdProducto.getText().trim();
+        String nombreProducto = jTextFieldNombre.getText().trim();
+        String precioTexto = jTextFieldPrecio.getText().trim();
+        String stockTexto = jTextFieldStock.getText().trim();
+
+        double precio = 0;
+        int stock = 0;
+
+        // Validar campos vacíos
+        if(idProducto.isEmpty() || nombreProducto.isEmpty() 
+                || precioTexto.isEmpty() || stockTexto.isEmpty()){
+
+            JOptionPane.showMessageDialog(this,
+                    "Todos los campos son obligatorios",
+                    "Error",
+                    JOptionPane.ERROR_MESSAGE);
+            bandera = false;
+        }
+
+        // Validar nombre
+        if(nombreProducto.length() < 3){
+            JOptionPane.showMessageDialog(this,
+                    "El nombre debe tener al menos 3 caracteres",
+                    "Error",
+                    JOptionPane.ERROR_MESSAGE);
+            bandera = false;
+        }
+
+        // Validar precio
+        try{
+            precio = Double.parseDouble(precioTexto);
+            if(precio <= 0){
+                JOptionPane.showMessageDialog(this,
+                        "El precio debe ser mayor a 0",
+                        "Error",
+                        JOptionPane.ERROR_MESSAGE);
+                bandera = false;
+            }
+        }catch(NumberFormatException e){
+            JOptionPane.showMessageDialog(this,
+                    "El precio debe ser un número válido",
+                    "Error",
+                    JOptionPane.ERROR_MESSAGE);
+            bandera = false;
+        }
+
+        // Validar stock
+        try{
+            stock = Integer.parseInt(stockTexto);
+            if(stock < 0){
+                JOptionPane.showMessageDialog(this,
+                        "El stock no puede ser negativo",
+                        "Error",
+                        JOptionPane.ERROR_MESSAGE);
+                bandera = false;
+            }
+        }catch(NumberFormatException e){
+            JOptionPane.showMessageDialog(this,
+                    "El stock debe ser un número entero válido",
+                    "Error",
+                    JOptionPane.ERROR_MESSAGE);
+            bandera = false;
+        }
+
+        if(bandera){
+            Producto producto = new Producto(idProducto, nombreProducto, precio);
+            StockProducto stockProducto = new StockProducto(producto, stock);
+
+            controlador.agregarProductoAInventario(stockProducto);
+            controlador.ocultarPantallaAgregarProducto();
+        }
+    }
+    
+    private void limpiarFormulario(){
+        jTextFieldIdProducto.setText("");
+        jTextFieldNombre.setText("");
+        jTextFieldPrecio.setText("0.00");
+        jTextFieldStock.setText("0");
     }
 }

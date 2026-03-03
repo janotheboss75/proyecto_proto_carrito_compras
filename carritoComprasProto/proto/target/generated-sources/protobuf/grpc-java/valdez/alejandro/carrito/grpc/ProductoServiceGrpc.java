@@ -25,7 +25,7 @@ public final class ProductoServiceGrpc {
       fullMethodName = SERVICE_NAME + '/' + "listarProductos",
       requestType = valdez.alejandro.carrito.grpc.ProductoRequest.class,
       responseType = valdez.alejandro.carrito.grpc.ProductoResponse.class,
-      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+      methodType = io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING)
   public static io.grpc.MethodDescriptor<valdez.alejandro.carrito.grpc.ProductoRequest,
       valdez.alejandro.carrito.grpc.ProductoResponse> getListarProductosMethod() {
     io.grpc.MethodDescriptor<valdez.alejandro.carrito.grpc.ProductoRequest, valdez.alejandro.carrito.grpc.ProductoResponse> getListarProductosMethod;
@@ -34,7 +34,7 @@ public final class ProductoServiceGrpc {
         if ((getListarProductosMethod = ProductoServiceGrpc.getListarProductosMethod) == null) {
           ProductoServiceGrpc.getListarProductosMethod = getListarProductosMethod =
               io.grpc.MethodDescriptor.<valdez.alejandro.carrito.grpc.ProductoRequest, valdez.alejandro.carrito.grpc.ProductoResponse>newBuilder()
-              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setType(io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING)
               .setFullMethodName(generateFullMethodName(SERVICE_NAME, "listarProductos"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
@@ -183,7 +183,7 @@ public final class ProductoServiceGrpc {
      */
     public void listarProductos(valdez.alejandro.carrito.grpc.ProductoRequest request,
         io.grpc.stub.StreamObserver<valdez.alejandro.carrito.grpc.ProductoResponse> responseObserver) {
-      io.grpc.stub.ClientCalls.asyncUnaryCall(
+      io.grpc.stub.ClientCalls.asyncServerStreamingCall(
           getChannel().newCall(getListarProductosMethod(), getCallOptions()), request, responseObserver);
     }
 
@@ -217,8 +217,9 @@ public final class ProductoServiceGrpc {
 
     /**
      */
-    public valdez.alejandro.carrito.grpc.ProductoResponse listarProductos(valdez.alejandro.carrito.grpc.ProductoRequest request) {
-      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+    public java.util.Iterator<valdez.alejandro.carrito.grpc.ProductoResponse> listarProductos(
+        valdez.alejandro.carrito.grpc.ProductoRequest request) {
+      return io.grpc.stub.ClientCalls.blockingServerStreamingCall(
           getChannel(), getListarProductosMethod(), getCallOptions(), request);
     }
 
@@ -248,14 +249,6 @@ public final class ProductoServiceGrpc {
     protected ProductoServiceFutureStub build(
         io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
       return new ProductoServiceFutureStub(channel, callOptions);
-    }
-
-    /**
-     */
-    public com.google.common.util.concurrent.ListenableFuture<valdez.alejandro.carrito.grpc.ProductoResponse> listarProductos(
-        valdez.alejandro.carrito.grpc.ProductoRequest request) {
-      return io.grpc.stub.ClientCalls.futureUnaryCall(
-          getChannel().newCall(getListarProductosMethod(), getCallOptions()), request);
     }
   }
 
@@ -307,7 +300,7 @@ public final class ProductoServiceGrpc {
     return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
         .addMethod(
           getListarProductosMethod(),
-          io.grpc.stub.ServerCalls.asyncUnaryCall(
+          io.grpc.stub.ServerCalls.asyncServerStreamingCall(
             new MethodHandlers<
               valdez.alejandro.carrito.grpc.ProductoRequest,
               valdez.alejandro.carrito.grpc.ProductoResponse>(

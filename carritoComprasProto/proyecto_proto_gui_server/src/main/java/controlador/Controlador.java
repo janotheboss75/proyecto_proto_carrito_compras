@@ -4,6 +4,7 @@
  */
 package controlador;
 
+import entidades.StockProducto;
 import interfaces.IControlador;
 import interfaces.IModeloModificable;
 
@@ -26,6 +27,21 @@ public class Controlador implements IControlador{
     @Override
     public void ocultarPantallaInventario() {
         modeloModificable.ocultarPantallaInventario();
+    }
+
+    @Override
+    public void mostrarPantallaAgregarProducto() {
+        modeloModificable.mostrarPantallaAgregarProducto();
+    }
+
+    @Override
+    public void ocultarPantallaAgregarProducto() {
+        modeloModificable.ocultarPantallaAgregarProducto();
+    }
+
+    @Override
+    public void agregarProductoAInventario(StockProducto stockProducto) {
+        modeloModificable.agregarProductoAInventario(stockProducto);
     }
     
 }

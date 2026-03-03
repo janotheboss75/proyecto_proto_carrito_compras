@@ -2,7 +2,6 @@ package conexion;
 
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
-import valdez.alejandro.carrito.grpc.ProductoServiceGrpc;
 
 /**
  *
@@ -33,20 +32,3 @@ public class GrpcChannelManager {
         }
     }
 }
-/*
-    @Override
-    public List<Producto> obtenerProductos() {
-        ProductoRequest request = ProductoRequest.newBuilder()
-                        .setUsuarioId("ALEJANDRO")
-                        .build();
-
-                ProductoResponse response = stub.listarProductos(request);
-                //Leer productos
-                for (Producto p : response.getProductosList()) {
-                    System.out.println("ID: " + p.getId());
-                    System.out.println("Nombre: " + p.getNombre());
-                    System.out.println("Precio: $" + p.getPrecio());
-                    System.out.println("--------------------");
-                }
-                return response.getProductosList();
-    }*/

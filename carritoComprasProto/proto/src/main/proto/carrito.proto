@@ -3,10 +3,6 @@ syntax = "proto3";
 option java_package = "valdez.alejandro.carrito.grpc";
 option java_multiple_files = true;
 
-//GESTION DE INVENTARIO
-service InventarioService{
-    rpc cargarInventario(InventarioRequest) returns (InventarioResponse);
-}
 message Producto {
     string id = 1;
     string nombre = 2;
@@ -16,23 +12,30 @@ message StockProducto {
     Producto producto = 1;
     int32 stock = 2;
 }
+
+//GESTION DE INVENTARIO
+/*
+service InventarioService{
+    rpc cargarInventario(InventarioRequest) returns (InventarioResponse);
+}
 message InventarioRequest {
     string usuario_id = 1;
 }
 message InventarioResponse {
     repeated StockProducto items = 1;
 }
+*/
 
 //GESTION DE PRODUCTOS
 service ProductoService{
-    rpc listarProductos(ProductoRequest) returns (ProductoResponse);
+    rpc listarProductos(ProductoRequest) returns (stream ProductoResponse);
     rpc escucharNuevosProductos(ProductoRequest) returns (stream ProductoResponse);
 }
 message ProductoRequest {
     string usuario_id = 1;
 }
 message ProductoResponse {
-    repeated Producto productos = 1;
+    Producto producto = 1;
 }
 
 //GESTION DE COMPRAS

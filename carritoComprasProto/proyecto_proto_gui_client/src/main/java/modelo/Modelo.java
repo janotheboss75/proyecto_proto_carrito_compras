@@ -7,6 +7,7 @@ import interfaces.IModeloLeible;
 import interfaces.IModeloModificable;
 import interfaces.Publisher;
 import interfaces.Subscriber;
+import interfaces.SubscriberClient;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,7 +15,7 @@ import java.util.List;
  *
  * @author janot
  */
-public class Modelo implements IModeloLeible, IModeloModificable, Publisher{
+public class Modelo implements IModeloLeible, IModeloModificable, Publisher, SubscriberClient{
     //Lista de subscriptores de modelo
     private List<Subscriber> subscriberList = new ArrayList();
     
@@ -32,8 +33,16 @@ public class Modelo implements IModeloLeible, IModeloModificable, Publisher{
     
     //Variable flag para productoSeleccionado;
     private Producto productoSeleccionado = null;
+    
+    //Conexion con cliente
+    private ICliente cliente;
 
-    public Modelo() {
+    public Modelo(ICliente cliente) {
+        this.cliente = cliente;
+        cliente.conectarConServidor();
+        cliente.cargarDatosExistentes();
+        cliente.subscribirAProductoService(this);
+        
     }
     
     //Metodos interfaz IModeloLeible
@@ -118,9 +127,14 @@ public class Modelo implements IModeloLeible, IModeloModificable, Publisher{
         }
     }
     
-    //Metodos moke
     public void agregarProducto(Producto producto){
         listaProductos.add(producto);
+        notifySubscribers();
+    }
+
+    @Override
+    public void update(Producto productoNuevo) {
+        agregarProducto(productoNuevo);
     }
 
 }

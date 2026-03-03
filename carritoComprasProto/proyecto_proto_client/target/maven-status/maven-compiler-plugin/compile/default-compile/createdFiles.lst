@@ -4,8 +4,8 @@ entidades\Producto.class
 valdez\alejandro\proyecto_proto_client\Proyecto_proto_client.class
 conexion\GrpcChannelManager.class
 interfaces\SubscriberClient.class
-interfaces\IClient.class
 mappers\ProductoMapper.class
+services\ProductoService$2.class
 fachada\Cliente.class
 fachada\ICliente.class
 services\ProductoService.class

@@ -1,9 +1,11 @@
 package implementaciones;
 
+import entidades.Producto;
 import io.grpc.stub.StreamObserver;
 import java.util.ArrayList;
 import java.util.List;
-import valdez.alejandro.carrito.grpc.Producto;
+import java.util.concurrent.CopyOnWriteArrayList;
+import mappers.ProductoMapper;
 import valdez.alejandro.carrito.grpc.ProductoRequest;
 import valdez.alejandro.carrito.grpc.ProductoResponse;
 import valdez.alejandro.carrito.grpc.ProductoServiceGrpc;
@@ -13,40 +15,58 @@ import valdez.alejandro.carrito.grpc.ProductoServiceGrpc;
  * @author janot
  */
 public class ProductoServiceImpl extends ProductoServiceGrpc.ProductoServiceImplBase{
-    List<entidades.Producto> listaInventario = new ArrayList<>();
+    
+    private final List<StreamObserver<ProductoResponse>> clientes = new CopyOnWriteArrayList<>();
+    
+    private List<entidades.Producto> listaInventario = new ArrayList<>();
 
     public ProductoServiceImpl() {
-        entidades.Producto p1 = new entidades.Producto("PROD-001", "Laptop Gamer", 1200.00);
-        entidades.Producto p2 = new entidades.Producto("PROD-002", "Mouse Optico", 25.50);
-        entidades.Producto p3 = new entidades.Producto("PROD-003", "Teclado Mecánico", 85.99);
-        entidades.Producto p4 = new entidades.Producto("PROD-004", "Monitor 27 Pulgadas", 299.90);
-        entidades.Producto p5 = new entidades.Producto("PROD-005", "Disco SSD 1TB", 129.75);
-        
-        listaInventario.add(p1);
-        listaInventario.add(p2);
-        listaInventario.add(p3);
-        listaInventario.add(p4);
-        listaInventario.add(p5);
     }
-    
+
     @Override
     public void listarProductos(ProductoRequest request, StreamObserver<ProductoResponse> responseObserver) {
-        System.out.println("Enviando Catalogo a " + request.getUsuarioId() + "...");
+        System.out.println("Procesando productos existentes para el usuario: " + request.getUsuarioId());
         
-        ProductoResponse.Builder responseBuilder = ProductoResponse.newBuilder();
-        
-        for (entidades.Producto p : listaInventario) {
-            Producto productoProto = Producto.newBuilder()
-                    .setId(p.getId())
-                    .setNombre(p.getNombre())
-                    .setPrecio(p.getPrecio())
-                    .build();
-            
-            responseBuilder.addProductos(productoProto);
-        }
-        
-        responseObserver.onNext(responseBuilder.build());
-        responseObserver.onCompleted();
+        try {
+                for (entidades.Producto producto : listaInventario) {
+
+                    ProductoResponse response = ProductoResponse.newBuilder()
+                            .setProducto(ProductoMapper.toProto(producto))
+                            .build();
+                    responseObserver.onNext(response);
+                }
+
+                responseObserver.onCompleted();
+
+            } catch (Exception e) {
+                responseObserver.onError(e);
+            }
     }
     
+    
+    
+    @Override
+    public void escucharNuevosProductos(ProductoRequest request, StreamObserver<ProductoResponse> responseObserver){
+        clientes.add(responseObserver);
+        System.out.println("Cliente " + request.getUsuarioId() + " conectado al stream");
+    }
+    
+    public void notificarNuevoProducto(entidades.Producto producto) {
+
+        ProductoResponse response = ProductoResponse.newBuilder()
+                        .setProducto(ProductoMapper.toProto(producto))
+                        .build();
+
+        for (StreamObserver<ProductoResponse> cliente : clientes) {
+            try {
+                cliente.onNext(response);
+            } catch (Exception e) {
+                clientes.remove(cliente); // remover cliente muerto
+            }
+        }
+    }
+
+    public void setListaInventario(List<Producto> listaInventario) {
+        this.listaInventario = listaInventario;
+    }
 }
