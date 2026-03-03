@@ -8,6 +8,9 @@ import io.grpc.stub.StreamObserver;
 import java.util.ArrayList;
 import java.util.List;
 import mappers.ProductoMapper;
+import valdez.alejandro.carrito.grpc.CompraRequest;
+import valdez.alejandro.carrito.grpc.CompraResponse;
+import valdez.alejandro.carrito.grpc.ProductoCarrito;
 import valdez.alejandro.carrito.grpc.ProductoRequest;
 import valdez.alejandro.carrito.grpc.ProductoResponse;
 import valdez.alejandro.carrito.grpc.ProductoServiceGrpc;
@@ -19,11 +22,11 @@ public class ProductoService {
     private final List<SubscriberClient> subscribers = new ArrayList<>();
     
     private final ProductoServiceGrpc.ProductoServiceStub asyncStub;
-    private final ProductoServiceGrpc.ProductoServiceBlockingStub blockingStub;
+    //private final ProductoServiceGrpc.ProductoServiceBlockingStub blockingStub;
 
     public ProductoService() {
         asyncStub = ProductoServiceGrpc.newStub(GrpcChannelManager.getChannel());
-        blockingStub = ProductoServiceGrpc.newBlockingStub(GrpcChannelManager.getChannel());
+        //blockingStub = ProductoServiceGrpc.newBlockingStub(GrpcChannelManager.getChannel());
     }
     
     public void listarProductosExistentesEnServidor(String usuarioId){
@@ -79,7 +82,7 @@ public class ProductoService {
                 });
     }
 
-    // 🔹 Observer pattern para el MVC
+    
     public void subscribe(SubscriberClient subscriber) {
         subscribers.add(subscriber);
     }

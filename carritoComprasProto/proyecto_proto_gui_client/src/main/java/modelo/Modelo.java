@@ -23,6 +23,8 @@ public class Modelo implements IModeloLeible, IModeloModificable, Publisher, Sub
     private boolean mostrarPantallaCarritoCompras = false;
     //Variable flag para mostrar o no mostrar la pantalla CantidadProducto
     private boolean mostrarPantallaCantidadProducto = false;
+    //Variable flag para mostrar o no mostrar la pantalla StatusPago
+    private boolean mostrarPantallaStatusPago = false;
     
     
     //Datos Moke de Productos
@@ -36,12 +38,16 @@ public class Modelo implements IModeloLeible, IModeloModificable, Publisher, Sub
     
     //Conexion con cliente
     private ICliente cliente;
+    
+    //Status de pago
+    private entidades.StatusPago statusPago = null;
 
     public Modelo(ICliente cliente) {
         this.cliente = cliente;
         cliente.conectarConServidor();
         cliente.cargarDatosExistentes();
         cliente.subscribirAProductoService(this);
+        cliente.subscribirAStatusProducto(this);
         
     }
     
@@ -71,7 +77,19 @@ public class Modelo implements IModeloLeible, IModeloModificable, Publisher, Sub
     public Producto obtenerProductoSeleccionado() {
         return productoSeleccionado;
     }
+    
+    @Override
+    public boolean isMostrandoPantallaStatusPago() {
+        return mostrarPantallaStatusPago;
+    }
+    
+    @Override
+    public entidades.StatusPago obtenerStatusPago() {
+        return statusPago;
+    }
 
+
+    
     //Metodos interfaz IModeloModificable
     @Override
     public void mostrarPantallaCarritoCompras() {
@@ -98,6 +116,18 @@ public class Modelo implements IModeloLeible, IModeloModificable, Publisher, Sub
     }
     
     @Override
+    public void mostrarPantallaStatusPago() {
+        mostrarPantallaStatusPago = true;
+        notifySubscribers();
+    }
+
+    @Override
+    public void ocultarPantallaStatusPago() {
+        mostrarPantallaStatusPago = false;
+        notifySubscribers();
+    }
+    
+    @Override
     public void seleccionarProducto(Producto producto) {
         productoSeleccionado = producto;
     }
@@ -107,8 +137,23 @@ public class Modelo implements IModeloLeible, IModeloModificable, Publisher, Sub
         listaProductosCarrito.add(productoCarrito);
         notifySubscribers();
     }
-
     
+    @Override
+    public void realizarCompra() {
+        cliente.realizarCompra(listaProductosCarrito);
+    }
+
+    @Override
+    public void limpiarCarrito() {
+        listaProductosCarrito = new ArrayList<>();
+        notifySubscribers();
+    }
+    
+    @Override
+    public void limpiarStatus() {
+        statusPago = null;
+    }
+
     //Metodos interfaz Publisher
     @Override
     public void subscribe(Subscriber subscriber) {
@@ -137,4 +182,9 @@ public class Modelo implements IModeloLeible, IModeloModificable, Publisher, Sub
         agregarProducto(productoNuevo);
     }
 
+    @Override
+    public void update(entidades.StatusPago statusPago) {
+        this.statusPago = statusPago;
+        mostrarPantallaStatusPago();
+    }
 }

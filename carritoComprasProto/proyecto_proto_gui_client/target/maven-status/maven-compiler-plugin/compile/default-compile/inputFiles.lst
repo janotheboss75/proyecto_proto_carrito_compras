@@ -2,6 +2,7 @@ C:\Users\janot\Desktop\carritoComprasProto\proyecto_proto_gui_client\src\main\ja
 C:\Users\janot\Desktop\carritoComprasProto\proyecto_proto_gui_client\src\main\java\entidades\Carrito.java
 C:\Users\janot\Desktop\carritoComprasProto\proyecto_proto_gui_client\src\main\java\entidades\Producto.java
 C:\Users\janot\Desktop\carritoComprasProto\proyecto_proto_gui_client\src\main\java\entidades\ProductoCarrito.java
+C:\Users\janot\Desktop\carritoComprasProto\proyecto_proto_gui_client\src\main\java\entidades\StatusPago.java
 C:\Users\janot\Desktop\carritoComprasProto\proyecto_proto_gui_client\src\main\java\interfaces\IControlador.java
 C:\Users\janot\Desktop\carritoComprasProto\proyecto_proto_gui_client\src\main\java\interfaces\IModeloLeible.java
 C:\Users\janot\Desktop\carritoComprasProto\proyecto_proto_gui_client\src\main\java\interfaces\IModeloModificable.java
@@ -12,3 +13,4 @@ C:\Users\janot\Desktop\carritoComprasProto\proyecto_proto_gui_client\src\main\ja
 C:\Users\janot\Desktop\carritoComprasProto\proyecto_proto_gui_client\src\main\java\valdez\alejandro\proyecto_proto_gui_client\Proyecto_proto_gui_client.java
 C:\Users\janot\Desktop\carritoComprasProto\proyecto_proto_gui_client\src\main\java\vista\CantidadProducto.java
 C:\Users\janot\Desktop\carritoComprasProto\proyecto_proto_gui_client\src\main\java\vista\CarritoCompras.java
+C:\Users\janot\Desktop\carritoComprasProto\proyecto_proto_gui_client\src\main\java\vista\StatusPago.java

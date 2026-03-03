@@ -16,7 +16,17 @@ public interface IControlador {
     
     public void ocultarPantallaCantidadProducto();
     
+    public void mostrarPantallaStatusProducto();
+    
+    public void ocultarPantallaStatusProducto();
+    
     public void seleccionarProducto(Producto producto);
     
     public void agregarProductoAlCarrito(ProductoCarrito productoCarrito);
+    
+    public void realizarCompra();
+    
+    public void limpiarCarrito();
+    
+    public void limpiarStatusPago();
 }

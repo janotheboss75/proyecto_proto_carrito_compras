@@ -13,5 +13,4 @@ public interface IModeloLeible {
     public boolean isMostrandoPantallaAgregarProducto();
     
     public List<StockProducto> obtenerInventario();
-    
 }

@@ -6,7 +6,7 @@ import java.util.List;
  *
  * @author janot
  */
-public interface IServer {
+public interface IServer{
     public void prenderServidor();
     
     public void apagarServidor();

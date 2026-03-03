@@ -2,7 +2,10 @@ package fachade;
 
 import conexion.GrpcServerManager;
 import entidades.Producto;
+import implementaciones.CompraServiceImpl;
 import implementaciones.ProductoServiceImpl;
+import interfaces.IModeloLeible;
+import interfaces.IModeloModificable;
 import interfaces.IServer;
 import java.util.List;
 
@@ -11,7 +14,11 @@ import java.util.List;
  * @author janot
  */
 public class Server implements IServer{
-    GrpcServerManager serverManager = new GrpcServerManager();
+    GrpcServerManager serverManager;
+
+    public Server(IModeloLeible modeloLeible, IModeloModificable modeloModificable) {
+        serverManager = new GrpcServerManager(modeloLeible, modeloModificable);
+    }
     
     @Override
     public void prenderServidor() {
@@ -44,5 +51,5 @@ public class Server implements IServer{
             System.out.println("Servidor aún no iniciado");
         }
     }
-    
+
 }

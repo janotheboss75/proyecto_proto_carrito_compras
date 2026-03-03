@@ -7,6 +7,7 @@ import fachada.ICliente;
 import modelo.Modelo;
 import vista.CantidadProducto;
 import vista.CarritoCompras;
+import vista.StatusPago;
 
 /**
  *
@@ -23,12 +24,12 @@ public class Proyecto_proto_gui_client {
         Controlador controlador = new Controlador(modelo);
         CarritoCompras cC = new CarritoCompras(modelo, controlador);
         CantidadProducto cP = new CantidadProducto(cC, true, modelo, controlador);
-        
-        
+        StatusPago stPa = new StatusPago(cC, true, modelo, controlador);
         
         //Subscribo la gui CarritoCompras a modelo
         modelo.subscribe(cC);
         modelo.subscribe(cP);
+        modelo.subscribe(stPa);
         
         //Muestro la GUI
         controlador.mostrarPantallaCarritoCompras();

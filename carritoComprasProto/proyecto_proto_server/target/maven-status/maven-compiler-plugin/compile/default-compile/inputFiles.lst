@@ -1,7 +1,8 @@
 C:\Users\janot\Desktop\carritoComprasProto\proyecto_proto_server\src\main\java\conexion\GrpcServerManager.java
 C:\Users\janot\Desktop\carritoComprasProto\proyecto_proto_server\src\main\java\entidades\Producto.java
+C:\Users\janot\Desktop\carritoComprasProto\proyecto_proto_server\src\main\java\entidades\StockProducto.java
 C:\Users\janot\Desktop\carritoComprasProto\proyecto_proto_server\src\main\java\fachade\Server.java
+C:\Users\janot\Desktop\carritoComprasProto\proyecto_proto_server\src\main\java\implementaciones\CompraServiceImpl.java
 C:\Users\janot\Desktop\carritoComprasProto\proyecto_proto_server\src\main\java\implementaciones\ProductoServiceImpl.java
-C:\Users\janot\Desktop\carritoComprasProto\proyecto_proto_server\src\main\java\interfaces\IServer.java
 C:\Users\janot\Desktop\carritoComprasProto\proyecto_proto_server\src\main\java\mappers\ProductoMapper.java
 C:\Users\janot\Desktop\carritoComprasProto\proyecto_proto_server\src\main\java\valdez\alejandro\proyecto_proto_server\Proyecto_proto_server.java

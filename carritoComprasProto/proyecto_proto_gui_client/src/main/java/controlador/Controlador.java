@@ -4,6 +4,7 @@ import entidades.Producto;
 import entidades.ProductoCarrito;
 import interfaces.IControlador;
 import interfaces.IModeloModificable;
+import java.util.List;
 
 /**
  *
@@ -36,6 +37,15 @@ public class Controlador implements IControlador{
         modeloModificable.ocultarPantallaCantidadProducto();
     }
 
+    public void mostrarPantallaStatusProducto() {
+        modeloModificable.mostrarPantallaStatusPago();
+    }
+
+    @Override
+    public void ocultarPantallaStatusProducto() {
+        modeloModificable.ocultarPantallaStatusPago();
+    }
+    
     @Override
     public void seleccionarProducto(Producto producto) {
         modeloModificable.seleccionarProducto(producto);
@@ -44,6 +54,21 @@ public class Controlador implements IControlador{
     @Override
     public void agregarProductoAlCarrito(ProductoCarrito productoCarrito) {
         modeloModificable.agregarProductoAlCarrito(productoCarrito);
+    }
+
+    @Override
+    public void realizarCompra() {
+        modeloModificable.realizarCompra();
+    }
+
+    @Override
+    public void limpiarCarrito() {
+        modeloModificable.limpiarCarrito();
+    }
+
+    @Override
+    public void limpiarStatusPago() {
+        modeloModificable.limpiarStatus();
     }
     
 }

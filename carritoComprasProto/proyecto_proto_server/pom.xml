@@ -42,5 +42,11 @@
             <artifactId>grpc-protobuf</artifactId>
             <version>${grpc.version}</version>
         </dependency>
+        
+        <dependency>
+            <groupId>valdez.alejandro</groupId>
+            <artifactId>IServerDependencia</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
     </dependencies>
 </project>

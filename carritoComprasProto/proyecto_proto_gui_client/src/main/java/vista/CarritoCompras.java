@@ -8,6 +8,7 @@ import interfaces.IModeloLeible;
 import interfaces.Subscriber;
 import java.awt.Color;
 import java.util.List;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -104,6 +105,9 @@ public class CarritoCompras extends javax.swing.JFrame implements Subscriber{
         jLabelPagar.setText("Pagar");
         jLabelPagar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabelPagar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabelPagarMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jLabelPagarMouseEntered(evt);
             }
@@ -168,6 +172,10 @@ public class CarritoCompras extends javax.swing.JFrame implements Subscriber{
     private void jListProductosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jListProductosMouseClicked
         accionSeleccionarProducto(evt);
     }//GEN-LAST:event_jListProductosMouseClicked
+
+    private void jLabelPagarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelPagarMouseClicked
+        pagar();
+    }//GEN-LAST:event_jLabelPagarMouseClicked
 
     private void accionSeleccionarProducto(java.awt.event.MouseEvent evt){
         if (evt.getClickCount() == 2) {
@@ -252,5 +260,14 @@ public class CarritoCompras extends javax.swing.JFrame implements Subscriber{
         
         String textoTotal = "Total (+16%Iva): $" + redondeado;
         jLabelTotal.setText(textoTotal);
+    }
+    
+    private void pagar(){
+        if(modeloLeible.obtenerProductosDelCarrito().size() == 0){
+            JOptionPane.showMessageDialog(this,"No se pudo realizar compra: Carrito Vacio", "Aviso", JOptionPane.WARNING_MESSAGE);
+        }
+        else{
+            controlador.realizarCompra();
+        }
     }
 }

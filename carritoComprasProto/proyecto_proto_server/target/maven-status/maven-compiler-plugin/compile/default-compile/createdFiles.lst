@@ -1,7 +1,8 @@
 implementaciones\ProductoServiceImpl.class
-interfaces\IServer.class
+implementaciones\CompraServiceImpl.class
 entidades\Producto.class
 fachade\Server.class
 valdez\alejandro\proyecto_proto_server\Proyecto_proto_server.class
+entidades\StockProducto.class
 mappers\ProductoMapper.class
 conexion\GrpcServerManager.class

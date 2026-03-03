@@ -1,0 +1,6 @@
+entidades\Producto.class
+interfaces\IModeloLeible.class
+interfaces\IModeloModificable.class
+entidades\StockProducto.class
+valdez\alejandro\iserverdependencia\IServerDependencia.class
+interfaces\IServer.class

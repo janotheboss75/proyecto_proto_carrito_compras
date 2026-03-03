@@ -6,7 +6,6 @@ vista\AgregarProducto$2.class
 interfaces\Publisher.class
 vista\Inventario$4.class
 vista\Inventario$2.class
-interfaces\IModeloLeible.class
 utils\SoloEnterosPositivosFilter.class
 vista\Inventario.class
 vista\Inventario$1.class

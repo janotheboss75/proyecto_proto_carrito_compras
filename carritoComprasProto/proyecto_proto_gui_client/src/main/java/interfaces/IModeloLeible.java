@@ -2,6 +2,7 @@ package interfaces;
 
 import entidades.Producto;
 import entidades.ProductoCarrito;
+import entidades.StatusPago;
 import java.util.List;
 
 /**
@@ -13,10 +14,14 @@ public interface IModeloLeible {
     
     public boolean isMostrandoPantallaCantidadProducto();
     
+    public boolean isMostrandoPantallaStatusPago();
+    
     public List<Producto> obtenerProductos();
     
     public List<ProductoCarrito> obtenerProductosDelCarrito();
     
     public Producto obtenerProductoSeleccionado();
+    
+    public StatusPago obtenerStatusPago();
     
 }

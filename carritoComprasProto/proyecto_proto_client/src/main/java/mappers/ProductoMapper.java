@@ -14,4 +14,13 @@ public class ProductoMapper {
                     proto.getPrecio()
             );
     }
+    
+    public static Producto toProto(entidades.Producto productoEntity) {
+
+        return Producto.newBuilder()
+                .setId(productoEntity.getId())
+                .setNombre(productoEntity.getNombre())
+                .setPrecio(productoEntity.getPrecio())
+                .build();
+    }
 }

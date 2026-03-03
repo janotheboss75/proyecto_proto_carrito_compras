@@ -1,9 +1,13 @@
 C:\Users\janot\Desktop\carritoComprasProto\proyecto_proto_client\src\main\java\conexion\GrpcChannelManager.java
 C:\Users\janot\Desktop\carritoComprasProto\proyecto_proto_client\src\main\java\entidades\Producto.java
+C:\Users\janot\Desktop\carritoComprasProto\proyecto_proto_client\src\main\java\entidades\ProductoCarrito.java
+C:\Users\janot\Desktop\carritoComprasProto\proyecto_proto_client\src\main\java\entidades\StatusPago.java
 C:\Users\janot\Desktop\carritoComprasProto\proyecto_proto_client\src\main\java\fachada\Cliente.java
 C:\Users\janot\Desktop\carritoComprasProto\proyecto_proto_client\src\main\java\fachada\ICliente.java
 C:\Users\janot\Desktop\carritoComprasProto\proyecto_proto_client\src\main\java\interfaces\PublisherClient.java
 C:\Users\janot\Desktop\carritoComprasProto\proyecto_proto_client\src\main\java\interfaces\SubscriberClient.java
+C:\Users\janot\Desktop\carritoComprasProto\proyecto_proto_client\src\main\java\mappers\ProductoCarritoMapper.java
 C:\Users\janot\Desktop\carritoComprasProto\proyecto_proto_client\src\main\java\mappers\ProductoMapper.java
+C:\Users\janot\Desktop\carritoComprasProto\proyecto_proto_client\src\main\java\services\CompraService.java
 C:\Users\janot\Desktop\carritoComprasProto\proyecto_proto_client\src\main\java\services\ProductoService.java
 C:\Users\janot\Desktop\carritoComprasProto\proyecto_proto_client\src\main\java\valdez\alejandro\proyecto_proto_client\Proyecto_proto_client.java

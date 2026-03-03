@@ -1,6 +1,7 @@
 package interfaces;
 
 import entidades.StockProducto;
+import java.util.List;
 
 /**
  *
@@ -16,5 +17,7 @@ public interface IModeloModificable {
     public void ocultarPantallaAgregarProducto();
     
     public void agregarProductoAInventario(StockProducto stockProducto);
+    
+    public void actualizarInventario(List<StockProducto> inventario);
     
 }

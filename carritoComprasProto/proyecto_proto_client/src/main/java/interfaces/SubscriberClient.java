@@ -1,6 +1,7 @@
 package interfaces;
 
 import entidades.Producto;
+import entidades.StatusPago;
 
 /**
  *
@@ -8,4 +9,6 @@ import entidades.Producto;
  */
 public interface SubscriberClient {
     public void update(Producto productoNuevo);
+    
+    public void update(StatusPago statusPago);
 }
